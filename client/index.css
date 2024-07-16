@@ -1,0 +1,13 @@
+.winbox.default{
+  background: #cb2a2a;
+}
+.winbox.default .wb-body {
+  color: #fff;
+  background: #131820;
+}
+.winbox.default .wb-title {
+  color: #a58383;
+}
+.winbox.default .wb-control {
+  filter: invert(1);
+}

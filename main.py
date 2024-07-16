@@ -1,7 +1,7 @@
 from bottle import route,run
 
 def get_file(filename):
-  with open(f"/client/{filename}","r") as file:
+  with open(f"./client/{filename}","r") as file:
     return file.read()
 
 @route("/")
