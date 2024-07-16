@@ -1,13 +1,22 @@
-.winbox.default{
-  background: #cb2a2a;
+.winbox {
+  background: linear-gradient(90deg, #ff00f0, #0050ff);
+  border-radius: 12px 12px 0 0;
+  box-shadow: none;
 }
-.winbox.default .wb-body {
+
+.winbox.min {
+  border-radius: 0;
+}
+
+.wb-body {
+  /* set the width of window border via margin: */
+  margin: 4px;
   color: #fff;
   background: #131820;
 }
-.winbox.default .wb-title {
-  color: #a58383;
-}
-.winbox.default .wb-control {
-  filter: invert(1);
+
+.wb-title {
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: 600;
 }
