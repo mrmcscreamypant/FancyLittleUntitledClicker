@@ -1,8 +1,10 @@
-from bottle import route,run
+from bottle import route,run,static_file
 
 def get_file(filename):
-  with open(f"./client/{filename}","r") as file:
-    return file.read()
+  try:
+    return static_file("./client/"+filename,"./")
+  except Exception as e:
+    return str(e)
 
 @route("/")
 def homepage():

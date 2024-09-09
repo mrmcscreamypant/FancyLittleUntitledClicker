@@ -1,41 +1,70 @@
-class WindowOptions extends Array {
-  constructor(...args) {
-    super()
-
-    this.hidden = true
-    this.class = ["no-full","no-max"]
-    
-    for (var i=0;i<args.length;i++) {
-      this[args.entries()[i]] = args[args.entries()[i]]
-    }
-  }
-}
-
 class Tier {
   constructor() {
     this._windows = {}
   }
 
   newWindow(id,title,options={}) {
-    options = new WindowOptions(options)
     this._windows[id] = (new WinBox(title,options))
   }
 }
 
+class Button {
+    constructor(host) {
+        this.host = host
+        
+        this.perClickScore = 1
+    }
+
+    click() {
+        this.host.score += this.perClickScore
+
+        if (this.host.score >= 10) {
+            this.host._windows.clickCount.show()
+        }
+    }
+}
+
 class Tier1 extends Tier {
-  constructor() {
-    super()
-    
-    this.newWindow("button","Button",{})
+    constructor() {
+        super()
+        
+        const self = this
+        
+        this.button = new Button(this)
+        
+        this.newWindow("button","Button",{onclose: (force)=>{createCannotCloseWindow();return true;},class: ["no-max","no-full"],mount: document.getElementById("buttonWindow")})
+        
+        this.newWindow("clickCount","Clicks",{hidden:true})
   }
 
   start() {
     this._windows.button.show()
   }
+
+    createCannotCloseWindow() {
+        self.newWindow("InvincibleButtonWindow","Invalid Action",{
+            minheight:100,
+            maxheight:150,
+            minwidth: 200,
+            maxwidth: 300,
+            class: [
+              "no-max",
+              "no-full",
+              "error-window"
+            ],
+            html: "You cannot close this window"
+          })
+        }
+    }
 }
 
-function startup() {
-  const tier1 = new Tier1()
+let tier1 = null
 
-  tier1.start()
+function startup() {
+    try {
+        tier1 = new Tier1()
+        tier1.start()
+    } catch (e) {
+        alert(e)
+    }
 }

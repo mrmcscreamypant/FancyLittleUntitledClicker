@@ -5,18 +5,22 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <!-- Main css -->
-    <style src="/index.css"></style>
+    <link rel="stylesheet" type="text/css" href="index.css">
 
     <!-- winbox -->
     <link rel="preload" href="https://rawcdn.githack.com/nextapps-de/winbox/0.2.82/dist/winbox.bundle.min.js" as="script">
     
   </head>
   <body onload="startup()">
+      <div id="buttonWindow" class="">
+          <div class="center-vert">
+            <button onclick='tier1.button.click()'>test</button>
+          </div>
+      </div>
     
     <!-- Load and run winbox -->
     <script src="https://rawcdn.githack.com/nextapps-de/winbox/0.2.82/dist/winbox.bundle.min.js" async></script>
     <!-- Main js -->
-    <script src="/index.js" defer></script>
-    
+    <script src="index.js" defer></script>
   </body>
 </html>
