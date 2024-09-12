@@ -14,9 +14,16 @@
   <body onload="startup()">
       <div id="buttonWindow" class="">
           <div class="center-vert">
-            <button onclick='tier1.button.click()'>test</button>
+            <button class="button" onclick='tier1.button.click()' id="button">test</button>
           </div>
       </div>
+
+      <div id="statWindow" class="">
+            <div class="center-vert">
+              <h1>Clicks: <span id="clickCounter">NaN</span></h1>
+                <h4>CPS: <span id="cpsDisplay">NaN</span></h4>
+            </div>
+        </div>
     
     <!-- Load and run winbox -->
     <script src="https://rawcdn.githack.com/nextapps-de/winbox/0.2.82/dist/winbox.bundle.min.js" async></script>
